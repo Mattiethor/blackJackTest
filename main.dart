@@ -194,18 +194,6 @@ int placeBet(int i){
   return i;
 }
 
-//String getString(){
-  
-  //return input;
-
-  //}
-
-
-
-
-
-
-
 
 void main(){
 
@@ -218,24 +206,27 @@ void main(){
 
  while(money>0){
 
-
+  //checks if player wants to quit or is broke.
    if(money <= 0){
     print('you are broke');
     print('Thanks for playing !');
     break;
-   }
-     
-     
+   }else if(money <100 || money > 100){
+  
+    print('Keep playing ?\nEnter y or n');
+    userInput = stdin.readLineSync();
+
+    if(userInput == 'y'){
+      print('Good luck !');
+    }else if(userInput == 'n'){
+     print('Thanks for playing');
+      break;
+      }
+     }
      
    
-   
-     
-      
-    
-   
-   
-  // creates deck
-  DeckOfCards deck = DeckOfCards();
+  // creates deck, player and dealer.
+   DeckOfCards deck = DeckOfCards();
    User player1 = User();
    User dealer = User();
    
@@ -249,16 +240,16 @@ void main(){
    print('\nplayer hand:${player1.hand}');
    print('Dealer hand:${dealer.hand}');
    print('-------------------------------------\n');
-
+   //Callculates the true value of the cards.
    int playerSum = sum(player1.hand);
    int dealerSum = sum(dealer.hand);
    
    print('Current player sum ${playerSum}');
    print('Current dealer sum ${dealerSum}');
    print('-------------------------------------\n');
-  
-   
-   
+
+   //placing bets. if the player bets more than he has he goes all in 
+   //crashes if letters are used. Will fix.
     print('place your bet !');
     print(money);
     int bet = getBet();
@@ -275,10 +266,10 @@ void main(){
     print('player money: $money');
     print('Current pool: $pool');
     
-
+    //Game starts
     while(true){
-    print('draw a card or stay ?');
-    String userInput = stdin.readLineSync();
+     print('draw a card or stay ?');
+     String userInput = stdin.readLineSync();
       if(userInput == 'draw'){
       player1.receiveCard(deck.drawCard());
       print('player hand:${player1.hand}');
