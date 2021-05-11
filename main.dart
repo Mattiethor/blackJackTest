@@ -216,9 +216,9 @@ void main(){
     print('Keep playing ?\nEnter y or n');
     userInput = stdin.readLineSync();
 
-    if(userInput == 'y'){
+    if(userInput.toLowerCase == 'y'){
       print('Good luck !');
-    }else if(userInput == 'n'){
+    }else if(userInput.toLowerCase == 'n'){
      print('Thanks for playing');
       break;
       }
@@ -251,7 +251,7 @@ void main(){
    //placing bets. if the player bets more than he has he goes all in 
    //crashes if letters are used. Will fix.
     print('place your bet !');
-    print(money);
+    print('your money: $money');
     int bet = getBet();
      if(bet > money){
        print('ALL INN !');
@@ -279,7 +279,7 @@ void main(){
       print('-------------------------------------\n');
       print('Current player sum ${playerSum}');
         if(playerSum > 21){
-          print('Bust!');
+          print('----------Bust!------------------');
           break;
         }
       }
