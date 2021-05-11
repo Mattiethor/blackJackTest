@@ -270,37 +270,42 @@ void main(){
     while(true){
      print('draw a card or stay ?');
      String userInput = stdin.readLineSync();
-      if(userInput == 'draw'){
+
+     if(userInput == 'draw'){
       player1.receiveCard(deck.drawCard());
+      print('-------------------------------------');
       print('player hand:${player1.hand}');
       playerSum = sum(player1.hand);
+      print('-------------------------------------\n');
       print('Current player sum ${playerSum}');
         if(playerSum > 21){
           print('Bust!');
           break;
         }
-        
-      
-      }else if(userInput == 'stay'){
+      }
+      else if(userInput == 'stay'){
         print('Dealer will now draw');
         dealerSum = sum(dealer.hand);
+        //dealer draws until he is at or over 17
         while(dealerSum <=17){
           dealer.receiveCard(deck.drawCard());
           dealerSum = sum(dealer.hand);
+         }
 
-
-          }
           print('${dealer.hand} ${dealerSum}'); 
           if(playerSum > dealerSum || playerSum == 21 || dealerSum > 21 ){
           print('----------your win !--------------');
           money = money + pool;
           break;
-          }else if(playerSum < dealerSum || dealerSum == 21){
+
+          }
+          else if(playerSum < dealerSum || dealerSum == 21){
           print('------------you lose !-------------');
           pool = 0;
           break;
           
-         }else if(playerSum == dealerSum){
+         }
+         else if(playerSum == dealerSum){
           print('Push !');
           money = money + bet;
           pool = 0;
@@ -313,6 +318,7 @@ void main(){
       }
     }
    }
+   print('Hope to see you again ');
 }
 
 
