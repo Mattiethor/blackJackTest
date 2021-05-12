@@ -184,8 +184,16 @@ int counter = 0;
 
 
 int getBet(){
-  int i = int.parse(stdin.readLineSync());
+while(true){
+ try{
+ int i = int.parse(stdin.readLineSync());
   return i;
+  break;
+ 
+ }on FormatException {
+  print('Only use whole numbers');
+ }
+ } 
 }
 
 int placeBet(int i){
@@ -216,11 +224,13 @@ void main(){
     print('Keep playing ?\nEnter y or n');
     userInput = stdin.readLineSync();
 
-    if(userInput.toLowerCase == 'y'){
+    if(userInput == 'y'){
       print('Good luck !');
-    }else if(userInput.toLowerCase == 'n'){
+    }else if(userInput == 'n'){
      print('Thanks for playing');
       break;
+      }else{
+      print('Enter either y or n');
       }
      }
      
